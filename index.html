@@ -855,15 +855,15 @@
                 </div>
                 <div class="mt-4 text-center">
                     <button onclick="checkDropdowns(['class-dd-1', 'class-dd-2', 'class-dd-3'], 'act11')" class="bg-slate-800 text-white px-6 py-2 rounded-full font-bold text-sm transition shadow-sm">Check Answers</button>
-                    <p id="act11-feedback" class="mt-2 font-bold h-5 text-sm"></p>
+                <div class="mt-8 text-center p-4 bg-slate-100 rounded-lg text-slate-500 font-medium border border-slate-200">
+                    "Awesome pronunciation! Now let's tackle our main grammar topic for today: Gerunds." 👉 <span class="text-indigo-600 font-bold cursor-pointer hover:underline" onclick="openTab('grammar')">Go to Grammar</span>
                 </div>
-            </div>
-
-            <div class="text-center">
-                 <button onclick="switchTab('tab-speaking')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-bold transition shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1">Next: Speaking Lab 🗣️ <i class="fa-solid fa-arrow-right ml-2"></i></button>
             </div>
         </section>
 
+        <!-- ========================================== -->
+        <!-- TAB 5: SPEAKING LAB                        -->
+        <!-- ========================================== -->
         <section id="tab-speaking" class="tab-content">
             <div class="transition-box border-l-pink-500 bg-pink-50">
                 <h4 class="text-pink-800"><i class="fa-solid fa-microphone"></i> Pronunciation Practice</h4>
@@ -939,43 +939,43 @@
                     <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"Can you speak louder?"</p>
                     <button onclick="startSpeechRecognition(this, 'can you speak louder', 'speech-card-10')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
                     <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
-                </div>
-                
-                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-11">
-                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"I am thirteen years old."</p>
-                    <button onclick="startSpeechRecognition(this, ['i am thirteen years old', 'i am 13 years old'], 'speech-card-11')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
-                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
-                </div>
-                
-                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-12">
-                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"It is nice to meet you."</p>
-                    <button onclick="startSpeechRecognition(this, 'it is nice to meet you', 'speech-card-12')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
-                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                <div class="mt-10 bg-slate-900 text-white rounded-2xl p-6 md:p-8 shadow-xl relative overflow-hidden">
+                    <div class="absolute -left-10 -bottom-10 text-9xl opacity-10 pointer-events-none">🔎</div>
+                    <h3 class="text-2xl font-bold text-amber-400 mb-4 flex items-center gap-3 relative z-10">
+                        <span>🔎</span> Activity 2: Find Someone Who...
+                    </h3>
+                    <p class="text-slate-300 mb-6 relative z-10">Stand up (or move to your breakout rooms)! You must ask your classmates questions to find one person who matches each description. <strong>You must formulate the question correctly using a Gerund!</strong></p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-600">
+                            <p class="text-indigo-300 font-bold text-sm mb-1">Find someone who...</p>
+                            <p class="text-lg">is interested in <strong class="text-emerald-400">(try)</strong> an extreme sport.</p>
+                            <p class="text-xs text-slate-400 mt-2 italic border-t border-slate-700 pt-2">Q: "Are you interested in trying an extreme sport?"</p>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-600">
+                            <p class="text-indigo-300 font-bold text-sm mb-1">Find someone who...</p>
+                            <p class="text-lg">always avoids <strong class="text-emerald-400">(do)</strong> the dishes at home.</p>
+                            <p class="text-xs text-slate-400 mt-2 italic border-t border-slate-700 pt-2">Q: "Do you always avoid doing the dishes?"</p>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-600">
+                            <p class="text-indigo-300 font-bold text-sm mb-1">Find someone who...</p>
+                            <p class="text-lg">is afraid of <strong class="text-emerald-400">(fly)</strong> in airplanes.</p>
+                            <p class="text-xs text-slate-400 mt-2 italic border-t border-slate-700 pt-2">Q: "Are you afraid of flying?"</p>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-600">
+                            <p class="text-indigo-300 font-bold text-sm mb-1">Find someone who...</p>
+                            <p class="text-lg">keeps <strong class="text-emerald-400">(forget)</strong> where they put their keys.</p>
+                            <p class="text-xs text-slate-400 mt-2 italic border-t border-slate-700 pt-2">Q: "Do you keep forgetting where you put your keys?"</p>
+                        </div>
+                    </div>
                 </div>
 
-            </div>
-
-            <div class="instruction-box mt-10 border-l-purple-500 bg-purple-50">
-                <h4 class="text-purple-800"><i class="fa-solid fa-bolt"></i> Activity 13: Fast Reactions</h4>
-                <ol>
-                    <li>Work with a partner. One student clicks a card to read a classroom problem.</li>
-                    <li>The other student must SAY the correct English survival phrase immediately without looking!</li>
-                    <li>Flip the card to check if they are correct.</li>
-                </ol>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><span class="text-3xl mb-2">🐢</span><p class="font-bold text-slate-700 text-sm">The teacher is talking like a rapper. Too fast!</p><p class="text-xs text-indigo-400 mt-2">Flip for Answer</p></div><div class="flip-card-back"><span class="text-2xl mb-2">💬</span><p class="font-bold text-sm text-white">"Speak slowly, please."</p></div></div></div>
-                <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><span class="text-3xl mb-2">🤔</span><p class="font-bold text-slate-700 text-sm">You didn't hear what the teacher just said.</p><p class="text-xs text-indigo-400 mt-2">Flip for Answer</p></div><div class="flip-card-back"><span class="text-2xl mb-2">💬</span><p class="font-bold text-sm text-white">"Can you repeat that, please?"</p></div></div></div>
-                <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><span class="text-3xl mb-2">🔤</span><p class="font-bold text-slate-700 text-sm">You don't know how to write a new word.</p><p class="text-xs text-indigo-400 mt-2">Flip for Answer</p></div><div class="flip-card-back"><span class="text-2xl mb-2">💬</span><p class="font-bold text-sm text-white">"How do you spell that?"</p></div></div></div>
-                <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><span class="text-3xl mb-2">🔇</span><p class="font-bold text-slate-700 text-sm">The teacher's microphone is turned off.</p><p class="text-xs text-indigo-400 mt-2">Flip for Answer</p></div><div class="flip-card-back"><span class="text-2xl mb-2">💬</span><p class="font-bold text-sm text-white">"You are on mute."</p></div></div></div>
-            </div>
-            
-            <div class="text-center mt-10">
-                 <button onclick="switchTab('tab-mission')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-full font-bold transition shadow-lg hover:shadow-emerald-500/30 text-lg uppercase tracking-wider transform hover:-translate-y-1">Go to Final Mission 🏁</button>
+                <div class="mt-8 text-center p-4 bg-slate-100 rounded-lg text-slate-500 font-medium border border-slate-200">
+                    "Fantastic conversations! You're using Gerunds like native speakers. Let's finish up for today." 👉 <span class="text-indigo-600 font-bold cursor-pointer hover:underline" onclick="openTab('mission')">Go to Final Mission</span>
+                </div>
             </div>
         </section>
-
+        
         <section id="tab-mission" class="tab-content">
             <div class="bg-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl text-white relative overflow-hidden mb-10">
                 <div class="absolute -right-10 -bottom-10 text-9xl opacity-5 pointer-events-none">🏨</div>
@@ -1044,8 +1044,144 @@
                         </details>
 
                         <div class="flex flex-col items-center justify-center mt-auto pt-6">
+                            <button onclick="switchTab('tab-home')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-full font-bold transition shadow-lg hover:shadow-emerald-500/30 text-lg uppercase tracking-wider transform hover:-translate-y-1">Next: Home Practice 🏠</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
             <div class="text-center pb-10">
                 <p class="text-slate-500 font-medium text-lg">Great job today! See you next class! 👋</p>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- TAB 7: HOME PRACTICE                       -->
+        <!-- ========================================== -->
+        <section id="tab-home" class="tab-content">
+            <div class="transition-box border-l-sky-500 bg-sky-50">
+                <h4 class="text-sky-800"><i class="fa-solid fa-house-laptop"></i> Keep Practicing!</h4>
+                <p>To master spelling and personal information, please review the vocabulary and explore the links below. You can preview the worksheets here, or click the blue <strong>"Open"</strong> button to view them in a new tab.</p>
+            </div>
+
+            <!-- Vocabulary Table -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8 overflow-x-auto">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2"><i class="fa-solid fa-book-open text-sky-500"></i> Vocabulary Reference</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Names -->
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-sky-50 border-b border-slate-200 text-slate-600 text-sm uppercase tracking-wider">
+                                <th class="p-3 font-bold w-1/2">Parts of a Name</th>
+                                <th class="p-3 font-bold w-1/2">Example: John Arthur Smith</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-800 text-sm">
+                            <tr>
+                                <td class="p-3 font-medium">First name (or given name)</td>
+                                <td class="p-3"><strong class="text-sky-600">John</strong></td>
+                            </tr>
+                            <tr class="bg-slate-50/50">
+                                <td class="p-3 font-medium">Middle name</td>
+                                <td class="p-3"><strong class="text-sky-600">Arthur</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium">Last name (or surname / family name)</td>
+                                <td class="p-3"><strong class="text-sky-600">Smith</strong></td>
+                            </tr>
+                            <tr class="bg-slate-50/50">
+                                <td class="p-3 font-medium">Full name</td>
+                                <td class="p-3"><strong class="text-sky-600">John Arthur Smith</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Email -->
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-sky-50 border-b border-slate-200 text-slate-600 text-sm uppercase tracking-wider">
+                                <th class="p-3 font-bold w-1/2">Email Language</th>
+                                <th class="p-3 font-bold w-1/2">Symbol</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-800 text-sm">
+                            <tr>
+                                <td class="p-3 font-medium">At</td>
+                                <td class="p-3 font-bold text-xl text-sky-600">@</td>
+                            </tr>
+                            <tr class="bg-slate-50/50">
+                                <td class="p-3 font-medium">Dot</td>
+                                <td class="p-3 font-bold text-xl text-sky-600">.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium">Underscore</td>
+                                <td class="p-3 font-bold text-xl text-sky-600">_</td>
+                            </tr>
+                            <tr class="bg-slate-50/50">
+                                <td class="p-3 font-medium">Dash (or hyphen)</td>
+                                <td class="p-3 font-bold text-xl text-sky-600">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Embeds -->
+            <div class="grid grid-cols-1 gap-8 mb-10">
+                <!-- Practice 1: Alphabet -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[500px]">
+                    <div class="bg-slate-100 p-3 border-b border-slate-200 flex justify-between items-center shadow-sm z-10">
+                        <span class="font-bold text-slate-700 text-sm truncate pr-4 flex items-center gap-2"><i class="fa-solid fa-globe text-sky-500"></i> Learning English Online: The Alphabet</span>
+                        <a href="https://www.learning-english-online.net/pronunciation/the-english-alphabet/" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold px-4 py-1.5 rounded transition shrink-0 flex items-center gap-2">Open <i class="fa-solid fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="w-full flex-grow relative bg-slate-50">
+                        <iframe src="https://www.learning-english-online.net/pronunciation/the-english-alphabet/" class="absolute inset-0 w-full h-full border-none" title="The English Alphabet"></iframe>
+                    </div>
+                </div>
+
+                <!-- Practice 2 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col min-h-[500px]">
+                    <div class="bg-slate-100 p-3 border-b border-slate-200 flex justify-between items-center shadow-sm z-10">
+                        <span class="font-bold text-slate-700 text-sm truncate pr-4 flex items-center gap-2"><i class="fa-solid fa-globe text-sky-500"></i> LiveWorksheets: Spelling & Phone Numbers</span>
+                        <a href="https://www.liveworksheets.com/worksheet/en/esl-listening/1580478" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold px-4 py-1.5 rounded transition shrink-0 flex items-center gap-2">Open <i class="fa-solid fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="w-full flex-grow relative bg-slate-50 overflow-y-auto p-4 flex flex-col items-center justify-start">
+                        <!-- Custom Embed for LiveWorksheets -->
+                        <div id="liveworksheet1580478" style="width:100%; max-width: 800px;">
+                            <span id="lwslink1580478"><a href="https://www.liveworksheets.com/worksheet/en/esl-listening/1580478">Listening, spelling, phone numbers learning activity 1</a>, an interactive worksheet by <a href="https://www.liveworksheets.com/u/estelamary">Mariela Gutierrez P.</a>
+                            <br><a href="https://www.liveworksheets.com">live<b>worksheets.com</b></a></span>
+                        </div>
+                        <script src="https://www.liveworksheets.com/embed/embed.js?v=1"></script>
+                        <script>
+                            loadliveworksheet(1580478,'xqak',1511,'www','new');
+                        </script>
+                    </div>
+                </div>
+
+                <!-- Practice 2 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col min-h-[500px]">
+                    <div class="bg-slate-100 p-3 border-b border-slate-200 flex justify-between items-center shadow-sm z-10">
+                        <span class="font-bold text-slate-700 text-sm truncate pr-4 flex items-center gap-2"><i class="fa-solid fa-globe text-sky-500"></i> LiveWorksheets: Personal Info Listening</span>
+                        <a href="https://www.liveworksheets.com/worksheet/en/english-language/2017815" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold px-4 py-1.5 rounded transition shrink-0 flex items-center gap-2">Open <i class="fa-solid fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="w-full flex-grow relative bg-slate-50 overflow-y-auto p-4 flex flex-col items-center justify-start">
+                        <!-- Custom Embed for LiveWorksheets -->
+                        <div id="liveworksheet2017815" style="width:100%; max-width: 800px;">
+                            <span id="lwslink2017815"><a href="https://www.liveworksheets.com/worksheet/en/english-language/2017815">PERSONAL INFORMATION 1 - Listening</a>, an interactive worksheet by <a href="https://www.liveworksheets.com/u/teachermateus">Teacher Mateus</a>
+                            <br><a href="https://www.liveworksheets.com">live<b>worksheets.com</b></a></span>
+                        </div>
+                        <script src="https://www.liveworksheets.com/embed/embed.js?v=1"></script>
+                        <script>
+                            loadliveworksheet(2017815,'sxep',1652,'www','new');
+                        </script>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center pb-10">
+                <p class="text-slate-500 font-medium text-lg">Great job today! You are building fantastic English survival skills. See you next class! 👋</p>
             </div>
         </section>
 
