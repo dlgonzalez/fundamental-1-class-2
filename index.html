@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamental 1 | Class 2 – Survival English</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        /* Base styles */
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0f172a; }
+        h1, h2, h3, h4, h5, .font-poppins { font-family: 'Poppins', sans-serif; }
+        .font-nunito { font-family: 'Nunito', sans-serif; }
+        
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-out forwards; }
+        
+        /* Glass & Shadows */
+        .glass-panel { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08); }
+        
+        /* Feedback Highlights */
+        .correct-highlight { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important;}
+        .wrong-highlight { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important;}
+        .sample-answer { background: #f0fdf4; border-left: 4px solid #22c55e; }
+        
+        /* Toasts */
+        .toast { position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; border-radius: 8px; color: white; font-weight: bold; opacity: 0; transition: opacity 0.3s, transform 0.3s; transform: translateY(20px); pointer-events: none; z-index: 1000; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .toast.show { opacity: 1; transform: translateY(0); }
+        .toast-success { background-color: #10b981; }
+        .toast-error { background-color: #ef4444; }
+        .toast-info { background-color: #3b82f6; }
+
+        /* Instructional Boxes */
+        .transition-box { background: linear-gradient(135deg, #eef2ff, #e0e7ff); border-left: 4px solid #6366f1; border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; }
+        .transition-box h4 { color: #3730a3; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .transition-box p { color: #334155; font-size: 0.9rem; line-height: 1.6; }
+        
+        .instruction-box { background: #fff7ed; border-left: 4px solid #f97316; border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; }
+        .instruction-box h4 { color: #9a3412; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .instruction-box ol, .instruction-box ul { color: #334155; font-size: 0.88rem; line-height: 1.7; padding-left: 20px; list-style-type: decimal;}
+
+        /* Custom Scrollbar for Nav */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Speech Recognition Mic animation */
+        .mic-active { animation: pulse-mic 1.5s infinite; background-color: #ef4444 !important; color: white !important; border-color: #ef4444 !important;}
+        @keyframes pulse-mic { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
+
+        /* Drag and Drop styles */
+        .droppable { min-height: 40px; border: 2px dashed #cbd5e1; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; background: #f8fafc; transition: all 0.2s;}
+        
+        /* Flip Cards */
+        .flip-card { perspective: 1000px; cursor: pointer; height: 160px;}
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; border-radius: 1rem; border: 2px solid #e2e8f0; }
+        .flip-card-front { background-color: #f8fafc; }
+        .flip-card-back { background-color: #4f46e5; color: white; transform: rotateY(180deg); border-color: #4f46e5;}
+
+        /* Alphabet Grid */
+        .alpha-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 10px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-slate-900 text-white shadow-2xl relative overflow-hidden border-b-4 border-emerald-500">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 translate-y-1/3 -translate-x-1/4"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 py-8 relative z-10">
+            <!-- Logo -->
+            <div class="mb-6">
+                <img src="https://www.colomboamericano.edu.co/wp-content/uploads/2024/06/Logo-Colombo-Horizontal.png" alt="Colombo Americano Logo" class="h-10 md:h-12 bg-white/95 p-2 rounded-lg shadow-sm">
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div class="flex items-center gap-5">
+                    <div class="h-16 w-16 md:h-20 md:w-20 bg-white rounded-2xl p-2 shadow-lg flex items-center justify-center text-4xl">
+                        🎒
+                    </div>
+                    <div>
+                        <h1 class="text-3xl md:text-4xl font-black tracking-tight mb-2 flex items-center font-poppins">
+                            Fundamental 1
+                        </h1>
+                        <p class="text-slate-300 text-sm md:text-base font-medium tracking-wide uppercase">Class 2 <span class="text-emerald-400 mx-2">•</span> Survival English</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 p-5 rounded-2xl backdrop-blur-md border border-white/10 shadow-xl max-w-md w-full md:w-auto">
+                    <h2 class="text-xl font-bold text-blue-300 mb-3 border-b border-white/20 pb-2">🎯 Today's Mission</h2>
+                    <ul class="text-sm text-slate-100 space-y-2">
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-emerald-400 mt-1 mr-2"></i> <strong>Present</strong> your personal information.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-emerald-400 mt-1 mr-2"></i> <strong>Spell</strong> names using the English alphabet.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-emerald-400 mt-1 mr-2"></i> <strong>Identify</strong> numbers from 1 to 100 clearly.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-emerald-400 mt-1 mr-2"></i> <strong>Apply</strong> survival language to ask for help.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-emerald-400 mt-1 mr-2"></i> <strong>Role-play</strong> a hotel check-in scenario.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex space-x-2 overflow-x-auto py-3 no-scrollbar" id="tab-container">
+                <button onclick="switchTab('tab-warmup')" id="btn-tab-warmup" class="px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 bg-slate-800 text-white shadow-md whitespace-nowrap">
+                    1. 🎲 Warm-up
+                </button>
+                <button onclick="switchTab('tab-presentations')" id="btn-tab-presentations" class="px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">
+                    2. 🎤 Presentations
+                </button>
+                <button onclick="switchTab('tab-alphabet')" id="btn-tab-alphabet" class="px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">
+                    3. 🔤 Alphabet
+                </button>
+                <button onclick="switchTab('tab-numbers')" id="btn-tab-numbers" class="px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">
+                    4. 🔢 Numbers
+                </button>
+                <button onclick="switchTab('tab-classroom')" id="btn-tab-classroom" class="px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">
+                    5. 🆘 Classroom Lang
+                </button>
+                <button onclick="switchTab('tab-speaking')" id="btn-tab-speaking" class="px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">
+                    6. 🗣️ Speaking
+                </button>
+                <button onclick="switchTab('tab-mission')" id="btn-tab-mission" class="px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">
+                    7. 🏁 Mission
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+        <section id="tab-warmup" class="tab-content active">
+            <div class="transition-box border-l-blue-500 bg-blue-50">
+                <h4 class="text-blue-800"><i class="fa-solid fa-bolt"></i> Welcome back!</h4>
+                <p>Let's wake up our brains! We will start with a speaking roulette, and then do a quick-fire game to review the questions we learned in Class 1.</p>
+            </div>
+
+            <!-- Activity 1: The Memory Wheel -->
+            <div class="instruction-box">
+                <h4><i class="fa-solid fa-list-ol"></i> Activity 1: The Speaking Wheel</h4>
+                <ol>
+                    <li>Click <strong>"SPIN"</strong> to roll the wheel.</li>
+                    <li>Read the prompt out loud.</li>
+                    <li>Answer the prompt verbally with your class or partner!</li>
+                </ol>
+            </div>
+
+            <div class="bg-slate-900 rounded-3xl p-8 shadow-2xl relative overflow-hidden mb-10 text-center">
+                <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#60a5fa 2px, transparent 2px); background-size: 30px 30px;"></div>
+                <h3 class="text-blue-400 font-bold uppercase tracking-widest text-sm mb-6 relative z-10">Speaking Challenge</h3>
+                
+                <div class="bg-slate-800 border-4 border-blue-500 w-full max-w-2xl mx-auto rounded-2xl p-8 min-h-[160px] flex items-center justify-center text-center shadow-inner relative z-10 mb-8 transition-all">
+                    <p id="roulette-text" class="text-2xl md:text-3xl font-medium font-poppins text-white leading-snug">
+                        Ready to review? Click SPIN!
+                    </p>
+                </div>
+                
+                <button onclick="spinRoulette()" id="spin-btn" class="relative z-10 bg-blue-600 hover:bg-blue-500 text-white font-black text-xl px-12 py-4 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.4)] transform hover:scale-105 transition-all">
+                    SPIN! 🎲
+                </button>
+            </div>
+
+            <!-- Activity 2: Quick-fire Unscramble -->
+            <div class="instruction-box border-l-purple-500 bg-purple-50">
+                <h4 class="text-purple-800"><i class="fa-solid fa-list-ol"></i> Activity 2: Quick-Fire Unscramble</h4>
+                <ol>
+                    <li>Do you remember how to ask and answer personal questions?</li>
+                    <li>Click the words in the correct order to build the sentences. Fast!</li>
+                </ol>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-10">
+                <div class="space-y-6" id="unscramble-container">
+                    <!-- Sentences generated via JS -->
+                </div>
+            </div>
+
+            <div class="text-center">
+                 <button onclick="switchTab('tab-presentations')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-bold transition shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1">Next: Presentations 🎤 <i class="fa-solid fa-arrow-right ml-2"></i></button>
+            </div>
+        </section>
+
+        <section id="tab-presentations" class="tab-content">
+            <div class="transition-box border-l-pink-500 bg-pink-50">
+                <h4 class="text-pink-800"><i class="fa-solid fa-microphone-lines"></i> Show Time!</h4>
+                <p>In our last class, you prepared a mini-conversation using greetings and personal information. Now it is time to present it to the class!</p>
+            </div>
+
+            <div class="instruction-box">
+                <h4><i class="fa-solid fa-list-ol"></i> Activity 3: Peer Presentations</h4>
+                <ol>
+                    <li>When the teacher calls your group, open your microphone.</li>
+                    <li>Present your conversation naturally. Don't worry about mistakes!</li>
+                    <li><strong>Audience:</strong> While others are speaking, use the checklist below to listen carefully.</li>
+                </ol>
+            </div>
+
+            <div class="mb-8 flex justify-center">
+                <img src="https://lh3.googleusercontent.com/d/1WN-m7KZNR5Jlh6qK0xYULlRVNIweMxH8" alt="Conversation Storyboard" class="max-w-full md:max-w-3xl rounded-2xl shadow-md border border-slate-200">
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+                <!-- Timer -->
+                <div class="bg-slate-900 rounded-3xl p-8 shadow-xl flex flex-col items-center justify-center text-center relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-8xl opacity-10">⏱️</div>
+                    <h3 class="text-pink-400 font-bold uppercase tracking-widest text-sm mb-4">Presentation Timer</h3>
+                    <div id="presentation-timer-display" class="text-7xl font-mono font-black text-white mb-8 tracking-tight">15:00</div>
+                    <div class="flex gap-4 relative z-10">
+                        <button onclick="startPresentationTimer()" id="pres-timer-start" class="bg-pink-600 hover:bg-pink-500 text-white font-bold py-3 px-8 rounded-full transition shadow-md">Start</button>
+                        <button onclick="resetPresentationTimer()" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-8 rounded-full transition">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Active Listening Checklist -->
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2"><i class="fa-solid fa-clipboard-check text-emerald-500"></i> Audience Checklist</h3>
+                    <p class="text-sm text-slate-600 mb-4">Click the boxes when you hear the presenters use these elements:</p>
+                    
+                    <div class="space-y-3 flex-grow">
+                        <label class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="w-5 h-5 text-emerald-600 rounded focus:ring-emerald-500">
+                            <span class="font-medium text-slate-700">They used a good greeting (Hello, Good evening).</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="w-5 h-5 text-emerald-600 rounded focus:ring-emerald-500">
+                            <span class="font-medium text-slate-700">They asked "What is your name?"</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="w-5 h-5 text-emerald-600 rounded focus:ring-emerald-500">
+                            <span class="font-medium text-slate-700">They shared their city or country.</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100 cursor-pointer hover:bg-slate-100 transition">
+                            <input type="checkbox" class="w-5 h-5 text-emerald-600 rounded focus:ring-emerald-500">
+                            <span class="font-medium text-slate-700">They said "Nice to meet you" or a good farewell.</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                 <button onclick="switchTab('tab-alphabet')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-bold transition shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1">Next: The Alphabet 🔤 <i class="fa-solid fa-arrow-right ml-2"></i></button>
+            </div>
+        </section>
+
+        <section id="tab-alphabet" class="tab-content">
+            <div class="transition-box border-l-emerald-500 bg-emerald-50">
+                <h4 class="text-emerald-800"><i class="fa-solid fa-spell-check"></i> Spelling & Survival</h4>
+                <p>Excellent presentations! Now, a very important survival skill: spelling your name. To do this, we need to master the English alphabet. It sounds very different from Spanish!</p>
+            </div>
+
+            <!-- Alphabet Chart -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-2">The English Alphabet</h3>
+                <p class="text-sm text-slate-500 mb-6">Click the speaker icon next to any letter to hear the pronunciation. The text in parentheses helps you read it.</p>
+                
+                <div class="alpha-grid" id="alphabet-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Alphabet by Sound -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-2">The Alphabet Sound Families 🧠</h3>
+                <p class="text-sm text-slate-500 mb-6">Adults remember the alphabet better when we group letters that have the same vowel sound. Look at these families!</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-red-50 p-4 rounded-xl border border-red-200 text-center">
+                        <div class="text-3xl mb-2">🚂</div>
+                        <h4 class="font-black text-red-600 mb-2">The "A" Train</h4>
+                        <p class="text-xs text-red-500 uppercase font-bold mb-2">Sound: /ei/</p>
+                        <p class="text-lg font-bold text-slate-800 tracking-widest">A H J K</p>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-xl border border-green-200 text-center">
+                        <div class="text-3xl mb-2">🌳</div>
+                        <h4 class="font-black text-green-600 mb-2">The "E" Tree</h4>
+                        <p class="text-xs text-green-500 uppercase font-bold mb-2">Sound: /i/</p>
+                        <p class="text-lg font-bold text-slate-800 tracking-widest">B C D E G P T V Z</p>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-200 text-center">
+                        <div class="text-3xl mb-2">🥚</div>
+                        <h4 class="font-black text-yellow-600 mb-2">The "E" Egg</h4>
+                        <p class="text-xs text-yellow-500 uppercase font-bold mb-2">Sound: /e/ (short)</p>
+                        <p class="text-lg font-bold text-slate-800 tracking-widest">F L M N S X</p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-200 text-center">
+                        <div class="text-3xl mb-2">👁️</div>
+                        <h4 class="font-black text-blue-600 mb-2">The "I" Eye</h4>
+                        <p class="text-xs text-blue-500 uppercase font-bold mb-2">Sound: /ai/</p>
+                        <p class="text-lg font-bold text-slate-800 tracking-widest">I Y</p>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded-xl border border-purple-200 text-center">
+                        <div class="text-3xl mb-2">📱</div>
+                        <h4 class="font-black text-purple-600 mb-2">The "O" Phone</h4>
+                        <p class="text-xs text-purple-500 uppercase font-bold mb-2">Sound: /ou/</p>
+                        <p class="text-lg font-bold text-slate-800 tracking-widest">O</p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-200 text-center">
+                        <div class="text-3xl mb-2">👢</div>
+                        <h4 class="font-black text-indigo-600 mb-2">The "U" Boot</h4>
+                        <p class="text-xs text-indigo-500 uppercase font-bold mb-2">Sound: /u/</p>
+                        <p class="text-lg font-bold text-slate-800 tracking-widest">Q U W</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center">
+                        <div class="text-3xl mb-2">🚗</div>
+                        <h4 class="font-black text-slate-600 mb-2">The "R" Car</h4>
+                        <p class="text-xs text-slate-500 uppercase font-bold mb-2">Sound: /ar/</p>
+                        <p class="text-lg font-bold text-slate-800 tracking-widest">R</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 4: Audio Dictation -->
+            <div class="instruction-box">
+                <h4><i class="fa-solid fa-list-ol"></i> Activity 4: Name Dictation</h4>
+                <ol>
+                    <li>Click the 🔊 Play button to hear someone spell their name.</li>
+                    <li>Type the name in the box.</li>
+                </ol>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8" id="act4-container">
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <button onclick="spellAudio('S, M, I, T, H.')" class="w-10 h-10 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-600 flex items-center justify-center text-lg shrink-0 transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex-grow">
+                        <input type="text" id="dict-1" class="w-full border-b-2 border-slate-300 px-2 py-1 outline-none font-bold text-slate-700 focus:border-emerald-500 uppercase text-sm" placeholder="Name 1">
+                    </div>
+                    <button onclick="checkDictation('dict-1', 'SMITH')" class="bg-slate-800 text-white px-3 py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <button onclick="spellAudio('J, O, N, E, S.')" class="w-10 h-10 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-600 flex items-center justify-center text-lg shrink-0 transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex-grow">
+                        <input type="text" id="dict-2" class="w-full border-b-2 border-slate-300 px-2 py-1 outline-none font-bold text-slate-700 focus:border-emerald-500 uppercase text-sm" placeholder="Name 2">
+                    </div>
+                    <button onclick="checkDictation('dict-2', 'JONES')" class="bg-slate-800 text-white px-3 py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <button onclick="spellAudio('G, A, R, C, I, A.')" class="w-10 h-10 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-600 flex items-center justify-center text-lg shrink-0 transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex-grow">
+                        <input type="text" id="dict-3" class="w-full border-b-2 border-slate-300 px-2 py-1 outline-none font-bold text-slate-700 focus:border-emerald-500 uppercase text-sm" placeholder="Name 3">
+                    </div>
+                    <button onclick="checkDictation('dict-3', 'GARCIA')" class="bg-slate-800 text-white px-3 py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <button onclick="spellAudio('W, H, I, T, E.')" class="w-10 h-10 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-600 flex items-center justify-center text-lg shrink-0 transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex-grow">
+                        <input type="text" id="dict-4" class="w-full border-b-2 border-slate-300 px-2 py-1 outline-none font-bold text-slate-700 focus:border-emerald-500 uppercase text-sm" placeholder="Name 4">
+                    </div>
+                    <button onclick="checkDictation('dict-4', 'WHITE')" class="bg-slate-800 text-white px-3 py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <button onclick="spellAudio('B, R, O, W, N.')" class="w-10 h-10 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-600 flex items-center justify-center text-lg shrink-0 transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex-grow">
+                        <input type="text" id="dict-5" class="w-full border-b-2 border-slate-300 px-2 py-1 outline-none font-bold text-slate-700 focus:border-emerald-500 uppercase text-sm" placeholder="Name 5">
+                    </div>
+                    <button onclick="checkDictation('dict-5', 'BROWN')" class="bg-slate-800 text-white px-3 py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <button onclick="spellAudio('D, A, V, I, S.')" class="w-10 h-10 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-600 flex items-center justify-center text-lg shrink-0 transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex-grow">
+                        <input type="text" id="dict-6" class="w-full border-b-2 border-slate-300 px-2 py-1 outline-none font-bold text-slate-700 focus:border-emerald-500 uppercase text-sm" placeholder="Name 6">
+                    </div>
+                    <button onclick="checkDictation('dict-6', 'DAVIS')" class="bg-slate-800 text-white px-3 py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <button onclick="spellAudio('M, I, L, L, E, R.')" class="w-10 h-10 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-600 flex items-center justify-center text-lg shrink-0 transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex-grow">
+                        <input type="text" id="dict-7" class="w-full border-b-2 border-slate-300 px-2 py-1 outline-none font-bold text-slate-700 focus:border-emerald-500 uppercase text-sm" placeholder="Name 7">
+                    </div>
+                    <button onclick="checkDictation('dict-7', 'MILLER')" class="bg-slate-800 text-white px-3 py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <button onclick="spellAudio('W, I, L, S, O, N.')" class="w-10 h-10 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-600 flex items-center justify-center text-lg shrink-0 transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex-grow">
+                        <input type="text" id="dict-8" class="w-full border-b-2 border-slate-300 px-2 py-1 outline-none font-bold text-slate-700 focus:border-emerald-500 uppercase text-sm" placeholder="Name 8">
+                    </div>
+                    <button onclick="checkDictation('dict-8', 'WILSON')" class="bg-slate-800 text-white px-3 py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <button onclick="spellAudio('M, O, O, R, E.')" class="w-10 h-10 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-600 flex items-center justify-center text-lg shrink-0 transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex-grow">
+                        <input type="text" id="dict-9" class="w-full border-b-2 border-slate-300 px-2 py-1 outline-none font-bold text-slate-700 focus:border-emerald-500 uppercase text-sm" placeholder="Name 9">
+                    </div>
+                    <button onclick="checkDictation('dict-9', 'MOORE')" class="bg-slate-800 text-white px-3 py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <button onclick="spellAudio('T, A, Y, L, O, R.')" class="w-10 h-10 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-600 flex items-center justify-center text-lg shrink-0 transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex-grow">
+                        <input type="text" id="dict-10" class="w-full border-b-2 border-slate-300 px-2 py-1 outline-none font-bold text-slate-700 focus:border-emerald-500 uppercase text-sm" placeholder="Name 10">
+                    </div>
+                    <button onclick="checkDictation('dict-10', 'TAYLOR')" class="bg-slate-800 text-white px-3 py-1 rounded font-bold text-xs">Check</button>
+                </div>
+            </div>
+
+            <!-- Activity 5 & 6: Spelling Dialogue -->
+            <div class="instruction-box">
+                <h4><i class="fa-solid fa-list-ol"></i> Activity 5: How do you spell...?</h4>
+                <ol>
+                    <li>Read the mini-conversations below.</li>
+                    <li>Choose the correct phrase to complete the dialogue.</li>
+                </ol>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 shadow-sm" id="spell-mcq-1">
+                    <p class="mb-2"><strong class="text-blue-600">A:</strong> My name is Ximena.</p>
+                    <p class="mb-4"><strong class="text-purple-600">B:</strong> <span class="bg-slate-200 px-6 py-0.5 rounded inline-block"></span> your name?</p>
+                    <p class="mb-4"><strong class="text-blue-600">A:</strong> It's X-I-M-E-N-A.</p>
+                    
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('spell-mcq-1', 0, 1, 5)" class="text-left bg-white border border-slate-200 py-2 px-3 rounded hover:bg-slate-100 text-sm font-medium transition">A) What do you spell</button>
+                        <button onclick="checkMCQ('spell-mcq-1', 1, 1, 5)" class="text-left bg-white border border-slate-200 py-2 px-3 rounded hover:bg-slate-100 text-sm font-medium transition">B) How do you spell</button>
+                        <button onclick="checkMCQ('spell-mcq-1', 2, 1, 5)" class="text-left bg-white border border-slate-200 py-2 px-3 rounded hover:bg-slate-100 text-sm font-medium transition">C) Can you spell</button>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 shadow-sm" id="spell-mcq-2">
+                    <p class="mb-2"><strong class="text-blue-600">Receptionist:</strong> What is your last name, please?</p>
+                    <p class="mb-2"><strong class="text-purple-600">Guest:</strong> It's Schwarzenegger.</p>
+                    <p class="mb-4"><strong class="text-blue-600">Receptionist:</strong> Oh. <span class="bg-slate-200 px-6 py-0.5 rounded inline-block"></span></p>
+                    
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('spell-mcq-2', 0, 2)" class="text-left bg-white border border-slate-200 py-2 px-3 rounded hover:bg-slate-100 text-sm font-medium transition">A) How are you?</button>
+                        <button onclick="checkMCQ('spell-mcq-2', 1, 2)" class="text-left bg-white border border-slate-200 py-2 px-3 rounded hover:bg-slate-100 text-sm font-medium transition">B) Are you from Germany?</button>
+                        <button onclick="checkMCQ('spell-mcq-2', 2, 2)" class="text-left bg-white border border-slate-200 py-2 px-3 rounded hover:bg-slate-100 text-sm font-medium transition">C) Can you spell that, please?</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instruction-box border-l-emerald-500 bg-emerald-50 mt-8">
+                <h4 class="text-emerald-800"><i class="fa-solid fa-users"></i> Activity 6: Pair Practice</h4>
+                <p>Work with a partner. Practice asking for names and spelling them. Use these questions:</p>
+                <ul class="mt-2 list-disc list-inside font-medium text-slate-700">
+                    <li>"What is your first name?" -> "How do you spell it?"</li>
+                    <li>"What is your last name?" -> "Can you spell that, please?"</li>
+                </ul>
+            </div>
+
+            <div class="text-center mt-10">
+                 <button onclick="switchTab('tab-numbers')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-bold transition shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1">Next: Numbers 1-100 🔢 <i class="fa-solid fa-arrow-right ml-2"></i></button>
+            </div>
+        </section>
+
+        <section id="tab-numbers" class="tab-content">
+            <div class="transition-box border-l-amber-500 bg-amber-50">
+                <h4 class="text-amber-800"><i class="fa-solid fa-calculator"></i> Numbers 1 to 100</h4>
+                <p>We need numbers for ages, addresses, prices, and telephone numbers. Let's start with 1 to 30, and then fix the biggest problem for Spanish speakers: the difference between "TEEN" and "TY".</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">Numbers 1 to 30</h3>
+                <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-10 gap-2 text-center text-sm font-medium text-slate-700 mb-6">
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">1<br>One</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">2<br>Two</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">3<br>Three</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">4<br>Four</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">5<br>Five</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">6<br>Six</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">7<br>Seven</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">8<br>Eight</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">9<br>Nine</div>
+                    <div class="p-2 bg-amber-100 rounded border border-amber-200 font-bold">10<br>Ten</div>
+                    
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">11<br>Eleven</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">12<br>Twelve</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">13<br>Thirteen</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">14<br>Fourteen</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">15<br>Fifteen</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">16<br>Sixteen</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">17<br>Seventeen</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">18<br>Eighteen</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">19<br>Nineteen</div>
+                    <div class="p-2 bg-amber-100 rounded border border-amber-200 font-bold">20<br>Twenty</div>
+
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">21<br>Twenty-one</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">22<br>Twenty-two</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">23<br>Twenty-three</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">24<br>Twenty-four</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">25<br>Twenty-five</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">26<br>Twenty-six</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">27<br>Twenty-seven</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">28<br>Twenty-eight</div>
+                    <div class="p-2 bg-slate-50 rounded border border-slate-100">29<br>Twenty-nine</div>
+                    <div class="p-2 bg-amber-100 rounded border border-amber-200 font-bold">30<br>Thirty</div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                        <h4 class="font-bold text-blue-800 mb-1">Repeating Patterns</h4>
+                        <p class="text-sm text-slate-700">After 20, the numbers repeat! You just say the "Ten" number, and add the single digit. (e.g., <strong>Thirty</strong> + <strong>two</strong> = 32. <strong>Forty</strong> + <strong>five</strong> = 45).</p>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                        <h4 class="font-bold text-purple-800 mb-1">Zero (0) vs. Oh</h4>
+                        <p class="text-sm text-slate-700">For ages or quantities, we say <strong>"Zero"</strong>. But for telephone numbers, room numbers, or years, we usually say the letter <strong>"Oh"</strong>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input: Teens vs Tens -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">The Danger Zone: Teens vs. Tens</h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-amber-100 p-3 rounded-lg border border-amber-200">
+                        <p class="text-3xl font-black text-amber-600 mb-1">13</p>
+                        <p class="font-bold text-sm text-slate-700">thir-<strong class="text-amber-600 uppercase text-lg">TEEN</strong></p>
+                    </div>
+                    <div class="bg-slate-100 p-3 rounded-lg border border-slate-200">
+                        <p class="text-3xl font-black text-slate-600 mb-1">30</p>
+                        <p class="font-bold text-sm text-slate-700"><strong class="text-slate-600 uppercase text-lg">THIR</strong>-ty</p>
+                    </div>
+                    
+                    <div class="bg-amber-100 p-3 rounded-lg border border-amber-200">
+                        <p class="text-3xl font-black text-amber-600 mb-1">14</p>
+                        <p class="font-bold text-sm text-slate-700">four-<strong class="text-amber-600 uppercase text-lg">TEEN</strong></p>
+                    </div>
+                    <div class="bg-slate-100 p-3 rounded-lg border border-slate-200">
+                        <p class="text-3xl font-black text-slate-600 mb-1">40</p>
+                        <p class="font-bold text-sm text-slate-700"><strong class="text-slate-600 uppercase text-lg">FOR</strong>-ty</p>
+                    </div>
+
+                    <div class="bg-amber-100 p-3 rounded-lg border border-amber-200">
+                        <p class="text-3xl font-black text-amber-600 mb-1">15</p>
+                        <p class="font-bold text-sm text-slate-700">fif-<strong class="text-amber-600 uppercase text-lg">TEEN</strong></p>
+                    </div>
+                    <div class="bg-slate-100 p-3 rounded-lg border border-slate-200">
+                        <p class="text-3xl font-black text-slate-600 mb-1">50</p>
+                        <p class="font-bold text-sm text-slate-700"><strong class="text-slate-600 uppercase text-lg">FIF</strong>-ty</p>
+                    </div>
+
+                    <div class="bg-amber-100 p-3 rounded-lg border border-amber-200">
+                        <p class="text-3xl font-black text-amber-600 mb-1">16</p>
+                        <p class="font-bold text-sm text-slate-700">six-<strong class="text-amber-600 uppercase text-lg">TEEN</strong></p>
+                    </div>
+                    <div class="bg-slate-100 p-3 rounded-lg border border-slate-200">
+                        <p class="text-3xl font-black text-slate-600 mb-1">60</p>
+                        <p class="font-bold text-sm text-slate-700"><strong class="text-slate-600 uppercase text-lg">SIX</strong>-ty</p>
+                    </div>
+                </div>
+                <p class="text-center text-sm text-slate-500 mt-4 italic">Notice the stress! TEENS stress the end. TENS stress the beginning.</p>
+            </div>
+
+            <!-- Activity 6: Listening Quiz (Teens vs Tens) -->
+            <div class="instruction-box">
+                <h4><i class="fa-solid fa-list-ol"></i> Activity 6: Teen or Ten?</h4>
+                <ol>
+                    <li>Click the 🔊 Play button to hear the number.</li>
+                    <li>Click the correct digits. Pay attention to the stress!</li>
+                </ol>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8" id="act6-num-container">
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col items-center text-center gap-3" id="num-q1">
+                    <button onclick="speakText('13.')" class="w-12 h-12 rounded-full bg-blue-100 hover:bg-blue-200 text-blue-600 flex items-center justify-center text-xl transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex gap-2 w-full">
+                        <button onclick="checkMCQ('num-q1', 0, 0, 5)" class="flex-1 bg-slate-50 border border-slate-200 py-2 rounded-lg font-bold text-lg hover:bg-slate-100 transition">13</button>
+                        <button onclick="checkMCQ('num-q1', 1, 0, 5)" class="flex-1 bg-slate-50 border border-slate-200 py-2 rounded-lg font-bold text-lg hover:bg-slate-100 transition">30</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col items-center text-center gap-3" id="num-q2">
+                    <button onclick="speakText('40.')" class="w-12 h-12 rounded-full bg-blue-100 hover:bg-blue-200 text-blue-600 flex items-center justify-center text-xl transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex gap-2 w-full">
+                        <button onclick="checkMCQ('num-q2', 0, 1, 5)" class="flex-1 bg-slate-50 border border-slate-200 py-2 rounded-lg font-bold text-lg hover:bg-slate-100 transition">14</button>
+                        <button onclick="checkMCQ('num-q2', 1, 1, 5)" class="flex-1 bg-slate-50 border border-slate-200 py-2 rounded-lg font-bold text-lg hover:bg-slate-100 transition">40</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col items-center text-center gap-3" id="num-q3">
+                    <button onclick="speakText('15.')" class="w-12 h-12 rounded-full bg-blue-100 hover:bg-blue-200 text-blue-600 flex items-center justify-center text-xl transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex gap-2 w-full">
+                        <button onclick="checkMCQ('num-q3', 0, 0, 5)" class="flex-1 bg-slate-50 border border-slate-200 py-2 rounded-lg font-bold text-lg hover:bg-slate-100 transition">15</button>
+                        <button onclick="checkMCQ('num-q3', 1, 0, 5)" class="flex-1 bg-slate-50 border border-slate-200 py-2 rounded-lg font-bold text-lg hover:bg-slate-100 transition">50</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col items-center text-center gap-3" id="num-q4">
+                    <button onclick="speakText('70.')" class="w-12 h-12 rounded-full bg-blue-100 hover:bg-blue-200 text-blue-600 flex items-center justify-center text-xl transition-colors"><i class="fa-solid fa-volume-high"></i></button>
+                    <div class="flex gap-2 w-full">
+                        <button onclick="checkMCQ('num-q4', 0, 1)" class="flex-1 bg-slate-50 border border-slate-200 py-2 rounded-lg font-bold text-lg hover:bg-slate-100 transition">17</button>
+                        <button onclick="checkMCQ('num-q4', 1, 1)" class="flex-1 bg-slate-50 border border-slate-200 py-2 rounded-lg font-bold text-lg hover:bg-slate-100 transition">70</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 7: Tile Match -->
+            <div class="instruction-box">
+                <h4><i class="fa-solid fa-list-ol"></i> Activity 7: Number Tile Match</h4>
+                <ol>
+                    <li>Click a blue text tile.</li>
+                    <li>Click the matching grey number tile to clear them both.</li>
+                </ol>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8 text-center">
+                <div id="tile-match-container" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 mx-auto">
+                    <!-- JS Injected -->
+                </div>
+                <p id="tile-match-feedback" class="mt-4 font-bold text-emerald-600 h-5"></p>
+            </div>
+
+            <!-- Activity 8: Phone Numbers -->
+            <div class="instruction-box">
+                <h4><i class="fa-solid fa-list-ol"></i> Activity 8: Telephone Dictation</h4>
+                <ol>
+                    <li>In English, we usually read phone numbers one-by-one (e.g., "three-zero-two").</li>
+                    <li>"0" is often pronounced as "Oh".</li>
+                    <li>Listen to the audio and type the phone number with no spaces or dashes.</li>
+                </ol>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-2">
+                    <button onclick="spellAudio('5, 5, 5, 2, 4, 1, 9.')" class="w-10 h-10 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 flex items-center justify-center text-lg transition-colors"><i class="fa-solid fa-phone"></i></button>
+                    <input type="text" id="phone-1" class="w-full border border-slate-300 rounded px-2 py-1 text-center font-bold outline-none focus:border-amber-500 text-sm" placeholder="Phone 1">
+                    <button onclick="checkDictation('phone-1', '5552419')" class="bg-slate-800 text-white w-full py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-2">
+                    <button onclick="spellAudio('3, 1, 0, 7, 7, 8, 2.')" class="w-10 h-10 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 flex items-center justify-center text-lg transition-colors"><i class="fa-solid fa-phone"></i></button>
+                    <input type="text" id="phone-2" class="w-full border border-slate-300 rounded px-2 py-1 text-center font-bold outline-none focus:border-amber-500 text-sm" placeholder="Phone 2">
+                    <button onclick="checkDictation('phone-2', '3107782')" class="bg-slate-800 text-white w-full py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-2">
+                    <button onclick="spellAudio('9, 0, 2, 4, 1, 1, 5.')" class="w-10 h-10 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 flex items-center justify-center text-lg transition-colors"><i class="fa-solid fa-phone"></i></button>
+                    <input type="text" id="phone-3" class="w-full border border-slate-300 rounded px-2 py-1 text-center font-bold outline-none focus:border-amber-500 text-sm" placeholder="Phone 3">
+                    <button onclick="checkDictation('phone-3', '9024115')" class="bg-slate-800 text-white w-full py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-2">
+                    <button onclick="spellAudio('4, 8, 1, 0, 2, 9, 3.')" class="w-10 h-10 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 flex items-center justify-center text-lg transition-colors"><i class="fa-solid fa-phone"></i></button>
+                    <input type="text" id="phone-4" class="w-full border border-slate-300 rounded px-2 py-1 text-center font-bold outline-none focus:border-amber-500 text-sm" placeholder="Phone 4">
+                    <button onclick="checkDictation('phone-4', '4810293')" class="bg-slate-800 text-white w-full py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-2">
+                    <button onclick="spellAudio('6, 0, 5, 8, 3, 3, 1.')" class="w-10 h-10 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 flex items-center justify-center text-lg transition-colors"><i class="fa-solid fa-phone"></i></button>
+                    <input type="text" id="phone-5" class="w-full border border-slate-300 rounded px-2 py-1 text-center font-bold outline-none focus:border-amber-500 text-sm" placeholder="Phone 5">
+                    <button onclick="checkDictation('phone-5', '6058331')" class="bg-slate-800 text-white w-full py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-2">
+                    <button onclick="spellAudio('2, 2, 4, 9, 0, 1, 8.')" class="w-10 h-10 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 flex items-center justify-center text-lg transition-colors"><i class="fa-solid fa-phone"></i></button>
+                    <input type="text" id="phone-6" class="w-full border border-slate-300 rounded px-2 py-1 text-center font-bold outline-none focus:border-amber-500 text-sm" placeholder="Phone 6">
+                    <button onclick="checkDictation('phone-6', '2249018')" class="bg-slate-800 text-white w-full py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-2">
+                    <button onclick="spellAudio('7, 1, 3, 0, 0, 5, 2.')" class="w-10 h-10 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 flex items-center justify-center text-lg transition-colors"><i class="fa-solid fa-phone"></i></button>
+                    <input type="text" id="phone-7" class="w-full border border-slate-300 rounded px-2 py-1 text-center font-bold outline-none focus:border-amber-500 text-sm" placeholder="Phone 7">
+                    <button onclick="checkDictation('phone-7', '7130052')" class="bg-slate-800 text-white w-full py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-2">
+                    <button onclick="spellAudio('8, 8, 1, 2, 4, 6, 0.')" class="w-10 h-10 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 flex items-center justify-center text-lg transition-colors"><i class="fa-solid fa-phone"></i></button>
+                    <input type="text" id="phone-8" class="w-full border border-slate-300 rounded px-2 py-1 text-center font-bold outline-none focus:border-amber-500 text-sm" placeholder="Phone 8">
+                    <button onclick="checkDictation('phone-8', '8812460')" class="bg-slate-800 text-white w-full py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-2">
+                    <button onclick="spellAudio('1, 5, 0, 9, 3, 3, 4.')" class="w-10 h-10 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 flex items-center justify-center text-lg transition-colors"><i class="fa-solid fa-phone"></i></button>
+                    <input type="text" id="phone-9" class="w-full border border-slate-300 rounded px-2 py-1 text-center font-bold outline-none focus:border-amber-500 text-sm" placeholder="Phone 9">
+                    <button onclick="checkDictation('phone-9', '1509334')" class="bg-slate-800 text-white w-full py-1 rounded font-bold text-xs">Check</button>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-2">
+                    <button onclick="spellAudio('9, 4, 4, 1, 7, 0, 5.')" class="w-10 h-10 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-600 flex items-center justify-center text-lg transition-colors"><i class="fa-solid fa-phone"></i></button>
+                    <input type="text" id="phone-10" class="w-full border border-slate-300 rounded px-2 py-1 text-center font-bold outline-none focus:border-amber-500 text-sm" placeholder="Phone 10">
+                    <button onclick="checkDictation('phone-10', '9441705')" class="bg-slate-800 text-white w-full py-1 rounded font-bold text-xs">Check</button>
+                </div>
+            </div>
+
+            <div class="instruction-box border-l-amber-500 bg-amber-50 mt-8">
+                <h4 class="text-amber-800"><i class="fa-solid fa-users"></i> Activity 9: Pair Practice</h4>
+                <p>Work with a partner. Practice asking for ages and phone numbers:</p>
+                <ul class="mt-2 list-disc list-inside font-medium text-slate-700">
+                    <li>"How old are you?" -> "I am [number] years old."</li>
+                    <li>"What is your phone number?" -> "It is [number]."</li>
+                </ul>
+            </div>
+
+            <div class="text-center mt-10">
+                 <button onclick="switchTab('tab-classroom')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-bold transition shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1">Next: Classroom Language 🆘 <i class="fa-solid fa-arrow-right ml-2"></i></button>
+            </div>
+        </section>
+
+        <section id="tab-classroom" class="tab-content">
+            <div class="transition-box border-l-red-500 bg-red-50">
+                <h4 class="text-red-800"><i class="fa-solid fa-life-ring"></i> Survival Phrases</h4>
+                <p>What happens when you don't understand the teacher? In English class, try to ask for help in English! Here are the 5 most important survival phrases.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8 overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[500px]">
+                    <thead>
+                        <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 text-sm uppercase tracking-wider">
+                            <th class="p-3 font-bold w-1/2">The Problem ❌</th>
+                            <th class="p-3 font-bold w-1/2">The Survival Phrase 🆘</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-800">
+                        <tr>
+                            <td class="p-3 font-medium">You don't understand the concept.</td>
+                            <td class="p-3"><strong class="text-red-600">I don't understand.</strong></td>
+                        </tr>
+                        <tr class="bg-slate-50/50">
+                            <td class="p-3 font-medium">You don't know how to write a word.</td>
+                            <td class="p-3"><strong class="text-red-600">How do you spell that?</strong></td>
+                        </tr>
+                        <tr class="bg-slate-50/50">
+                            <td class="p-3 font-medium">You don't know the definition.</td>
+                            <td class="p-3"><strong class="text-red-600">What does [word] mean?</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-medium">You need to use the bathroom.</td>
+                            <td class="p-3"><strong class="text-red-600">May I go to the restroom, please?</strong></td>
+                        </tr>
+                        <tr class="bg-slate-50/50">
+                            <td class="p-3 font-medium">The audio is too quiet.</td>
+                            <td class="p-3"><strong class="text-red-600">Can you speak louder, please?</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-medium">The teacher is talking but you don't hear anything.</td>
+                            <td class="p-3"><strong class="text-red-600">You are on mute. / Please turn on your mic.</strong></td>
+                        </tr>
+                        <tr class="bg-slate-50/50">
+                            <td class="p-3 font-medium">Your internet is failing and you might disconnect.</td>
+                            <td class="p-3"><strong class="text-red-600">My internet is unstable. / I have a bad connection.</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-medium">You need to see the book on the screen.</td>
+                            <td class="p-3"><strong class="text-red-600">Can you share your screen, please?</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Activity 10: Context Matching -->
+            <div class="instruction-box">
+                <h4><i class="fa-solid fa-list-ol"></i> Activity 10: Match the problem</h4>
+                <ol>
+                    <li>Read the situation.</li>
+                    <li>Choose the correct survival phrase to use.</li>
+                </ol>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8" id="act9-classroom-container">
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm" id="class-q1">
+                    <p class="font-medium text-slate-800 mb-3 text-sm">1. Diego says: "Open your books to page 45." You didn't hear the page number.</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('class-q1', 0, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">A) Speak slowly, please.</button>
+                        <button onclick="checkMCQ('class-q1', 1, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">B) Can you repeat that, please?</button>
+                        <button onclick="checkMCQ('class-q1', 2, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">C) I don't understand.</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm" id="class-q2">
+                    <p class="font-medium text-slate-800 mb-3 text-sm">2. You want to talk about your cat, but you only know the word in Spanish ("gato").</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('class-q2', 0, 2)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">A) I don't understand "gato".</button>
+                        <button onclick="checkMCQ('class-q2', 1, 2)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">B) How do you spell "gato"?</button>
+                        <button onclick="checkMCQ('class-q2', 2, 2)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">C) How do you say "gato" in English?</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm" id="class-q3">
+                    <p class="font-medium text-slate-800 mb-3 text-sm">3. Diego explains a complex grammar rule. It is very confusing for you.</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('class-q3', 0, 0)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">A) I don't understand.</button>
+                        <button onclick="checkMCQ('class-q3', 1, 0)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">B) How do you spell that?</button>
+                        <button onclick="checkMCQ('class-q3', 2, 0)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">C) Can you repeat the page?</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm" id="class-q4">
+                    <p class="font-medium text-slate-800 mb-3 text-sm">4. Diego is explaining the homework, but he is talking like a rapper. Too fast!</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('class-q4', 0, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">A) How do you say that in English?</button>
+                        <button onclick="checkMCQ('class-q4', 1, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">B) Speak slowly, please.</button>
+                        <button onclick="checkMCQ('class-q4', 2, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">C) I don't understand the spell.</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm" id="class-q5">
+                    <p class="font-medium text-slate-800 mb-3 text-sm">5. The teacher writes "Schedule" on the board. You don't know what it is.</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('class-q5', 0, 2)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">A) How do you spell "schedule"?</button>
+                        <button onclick="checkMCQ('class-q5', 1, 2)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">B) Can you repeat that?</button>
+                        <button onclick="checkMCQ('class-q5', 2, 2)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">C) What does "schedule" mean?</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm" id="class-q6">
+                    <p class="font-medium text-slate-800 mb-3 text-sm">6. You urgently need to leave the classroom to wash your hands.</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('class-q6', 0, 0)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">A) May I go to the restroom, please?</button>
+                        <button onclick="checkMCQ('class-q6', 1, 0)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">B) I don't understand.</button>
+                        <button onclick="checkMCQ('class-q6', 2, 0)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">C) How do you say "restroom"?</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm" id="class-q7">
+                    <p class="font-medium text-slate-800 mb-3 text-sm">7. You hear a new word, but you want to write it in your notebook correctly.</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('class-q7', 0, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">A) What does it mean?</button>
+                        <button onclick="checkMCQ('class-q7', 1, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">B) How do you spell that?</button>
+                        <button onclick="checkMCQ('class-q7', 2, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">C) Speak slowly, please.</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm" id="class-q8">
+                    <p class="font-medium text-slate-800 mb-3 text-sm">8. The teacher is playing an audio track, but the volume is too low.</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('class-q8', 0, 2)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">A) Speak slowly, please.</button>
+                        <button onclick="checkMCQ('class-q8', 1, 2)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">B) Can you repeat that?</button>
+                        <button onclick="checkMCQ('class-q8', 2, 2)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">C) Can you speak louder, please?</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm" id="class-q9">
+                    <p class="font-medium text-slate-800 mb-3 text-sm">9. Diego's mouth is moving, but there is no sound.</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('class-q9', 0, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">A) Speak slowly, please.</button>
+                        <button onclick="checkMCQ('class-q9', 1, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">B) You are on mute, teacher.</button>
+                        <button onclick="checkMCQ('class-q9', 2, 1)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">C) Can you repeat that?</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm" id="class-q10">
+                    <p class="font-medium text-slate-800 mb-3 text-sm">10. Your zoom is freezing and disconnecting.</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="checkMCQ('class-q10', 0, 0)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">A) My internet is unstable.</button>
+                        <button onclick="checkMCQ('class-q10', 1, 0)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">B) Can you share your screen?</button>
+                        <button onclick="checkMCQ('class-q10', 2, 0)" class="bg-slate-50 hover:bg-slate-100 transition border border-slate-200 py-1.5 px-3 rounded text-sm text-left">C) You are on mute.</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 11: Dialogue Completion -->
+            <div class="instruction-box mt-8">
+                <h4><i class="fa-solid fa-list-ol"></i> Activity 11: Complete the Virtual Class</h4>
+                <ol>
+                    <li>Read the virtual classroom problems.</li>
+                    <li>Select the correct phrase from the dropdown to fix the problem.</li>
+                </ol>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <p class="mb-4 leading-relaxed"><strong class="text-blue-600">Diego:</strong> Ok class, open your books to page 12. Let's do the reading.</p>
+                    <p class="mb-4 leading-relaxed"><strong class="text-purple-600">Student:</strong> Teacher, I don't have the book yet. 
+                        <select id="class-dd-1" class="border border-slate-300 rounded p-1 text-sm font-bold text-red-600 outline-none">
+                            <option value="">---</option><option value="wrong">Are you on mute?</option><option value="correct">Can you share your screen, please?</option>
+                        </select>
+                    </p>
+                    <p class="mb-4 leading-relaxed"><strong class="text-blue-600">Diego:</strong> Oh, sure! Here is the screen. Can you all see it? ... Class?</p>
+                    <p class="mb-4 leading-relaxed"><strong class="text-purple-600">Student:</strong> Teacher, we can't hear you. 
+                        <select id="class-dd-2" class="border border-slate-300 rounded p-1 text-sm font-bold text-red-600 outline-none">
+                            <option value="">---</option><option value="correct">You are on mute.</option><option value="wrong">Speak slowly, please.</option>
+                        </select>
+                    </p>
+                    <p class="mb-4 leading-relaxed"><strong class="text-blue-600">Diego:</strong> Sorry about that! As I was saying, read the paragraph quickly.</p>
+                    <p class="mb-4 leading-relaxed"><strong class="text-purple-600">Student:</strong> Teacher, my Zoom is failing. 
+                        <select id="class-dd-3" class="border border-slate-300 rounded p-1 text-sm font-bold text-red-600 outline-none">
+                            <option value="">---</option><option value="wrong">How do you spell it?</option><option value="correct">My internet is unstable.</option>
+                        </select>
+                    </p>
+                </div>
+                <div class="mt-4 text-center">
+                    <button onclick="checkDropdowns(['class-dd-1', 'class-dd-2', 'class-dd-3'], 'act11')" class="bg-slate-800 text-white px-6 py-2 rounded-full font-bold text-sm transition shadow-sm">Check Answers</button>
+                    <p id="act11-feedback" class="mt-2 font-bold h-5 text-sm"></p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                 <button onclick="switchTab('tab-speaking')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-full font-bold transition shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1">Next: Speaking Lab 🗣️ <i class="fa-solid fa-arrow-right ml-2"></i></button>
+            </div>
+        </section>
+
+        <section id="tab-speaking" class="tab-content">
+            <div class="transition-box border-l-pink-500 bg-pink-50">
+                <h4 class="text-pink-800"><i class="fa-solid fa-microphone"></i> Pronunciation Practice</h4>
+                <p>Let's practice pronouncing numbers, spelled words, and survival language. Speak clearly to the computer!</p>
+            </div>
+
+            <div class="instruction-box">
+                <h4><i class="fa-solid fa-list-ol"></i> Activity 12: Read Aloud</h4>
+                <ol>
+                    <li>Click the red <strong>Microphone</strong> button below a sentence.</li>
+                    <li>Allow microphone permissions if your browser asks.</li>
+                    <li>Read the target phrase clearly and loudly.</li>
+                </ol>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8" id="speech-container">
+                
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-1">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"I don't understand."</p>
+                    <button onclick="startSpeechRecognition(this, ['i don\'t understand', 'i do not understand'], 'speech-card-1')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-2">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"Can you repeat that, please?"</p>
+                    <button onclick="startSpeechRecognition(this, 'can you repeat that please', 'speech-card-2')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-3">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"How do you spell that?"</p>
+                    <button onclick="startSpeechRecognition(this, 'how do you spell that', 'speech-card-3')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-4">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"I am thirty years old."</p>
+                    <button onclick="startSpeechRecognition(this, ['i am thirty years old', 'i am 30 years old'], 'speech-card-4')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-5">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"Speak slowly, please."</p>
+                    <button onclick="startSpeechRecognition(this, 'speak slowly please', 'speech-card-5')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-6">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"My number is five, two, four."</p>
+                    <button onclick="startSpeechRecognition(this, ['my number is five two four', 'my number is 524', 'my number is 5 2 4'], 'speech-card-6')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-7">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"What does that mean?"</p>
+                    <button onclick="startSpeechRecognition(this, 'what does that mean', 'speech-card-7')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-8">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"May I go to the restroom?"</p>
+                    <button onclick="startSpeechRecognition(this, 'may i go to the restroom', 'speech-card-8')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-9">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"How do you say cat?"</p>
+                    <button onclick="startSpeechRecognition(this, 'how do you say cat', 'speech-card-9')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-10">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"Can you speak louder?"</p>
+                    <button onclick="startSpeechRecognition(this, 'can you speak louder', 'speech-card-10')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-11">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"I am thirteen years old."</p>
+                    <button onclick="startSpeechRecognition(this, ['i am thirteen years old', 'i am 13 years old'], 'speech-card-11')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center speech-card" id="speech-card-12">
+                    <p class="text-lg font-black text-slate-800 mb-6 font-poppins h-12 flex items-center justify-center">"It is nice to meet you."</p>
+                    <button onclick="startSpeechRecognition(this, 'it is nice to meet you', 'speech-card-12')" class="w-14 h-14 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-600 text-xl transition flex items-center justify-center mb-2"><i class="fa-solid fa-microphone"></i></button>
+                    <p class="text-xs text-slate-400 h-4 status-text">Click to speak</p>
+                </div>
+
+            </div>
+
+            <div class="instruction-box mt-10 border-l-purple-500 bg-purple-50">
+                <h4 class="text-purple-800"><i class="fa-solid fa-bolt"></i> Activity 13: Fast Reactions</h4>
+                <ol>
+                    <li>Work with a partner. One student clicks a card to read a classroom problem.</li>
+                    <li>The other student must SAY the correct English survival phrase immediately without looking!</li>
+                    <li>Flip the card to check if they are correct.</li>
+                </ol>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><span class="text-3xl mb-2">🐢</span><p class="font-bold text-slate-700 text-sm">The teacher is talking like a rapper. Too fast!</p><p class="text-xs text-indigo-400 mt-2">Flip for Answer</p></div><div class="flip-card-back"><span class="text-2xl mb-2">💬</span><p class="font-bold text-sm text-white">"Speak slowly, please."</p></div></div></div>
+                <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><span class="text-3xl mb-2">🤔</span><p class="font-bold text-slate-700 text-sm">You didn't hear what the teacher just said.</p><p class="text-xs text-indigo-400 mt-2">Flip for Answer</p></div><div class="flip-card-back"><span class="text-2xl mb-2">💬</span><p class="font-bold text-sm text-white">"Can you repeat that, please?"</p></div></div></div>
+                <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><span class="text-3xl mb-2">🔤</span><p class="font-bold text-slate-700 text-sm">You don't know how to write a new word.</p><p class="text-xs text-indigo-400 mt-2">Flip for Answer</p></div><div class="flip-card-back"><span class="text-2xl mb-2">💬</span><p class="font-bold text-sm text-white">"How do you spell that?"</p></div></div></div>
+                <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><span class="text-3xl mb-2">🔇</span><p class="font-bold text-slate-700 text-sm">The teacher's microphone is turned off.</p><p class="text-xs text-indigo-400 mt-2">Flip for Answer</p></div><div class="flip-card-back"><span class="text-2xl mb-2">💬</span><p class="font-bold text-sm text-white">"You are on mute."</p></div></div></div>
+            </div>
+            
+            <div class="text-center mt-10">
+                 <button onclick="switchTab('tab-mission')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-full font-bold transition shadow-lg hover:shadow-emerald-500/30 text-lg uppercase tracking-wider transform hover:-translate-y-1">Go to Final Mission 🏁</button>
+            </div>
+        </section>
+
+        <section id="tab-mission" class="tab-content">
+            <div class="bg-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl text-white relative overflow-hidden mb-10">
+                <div class="absolute -right-10 -bottom-10 text-9xl opacity-5 pointer-events-none">🏨</div>
+                <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#6366f1 2px, transparent 2px); background-size: 30px 30px;"></div>
+                
+                <div class="text-center relative z-10 mb-10">
+                    <span class="bg-emerald-500 text-slate-900 text-xs font-black px-4 py-2 rounded-full uppercase tracking-wider shadow-sm">Activity 12: Role-Play</span>
+                    <h2 class="text-3xl md:text-5xl font-poppins font-black mt-4 mb-4">The Hotel Check-In</h2>
+                    <p class="text-slate-300 max-w-2xl mx-auto text-lg">Work with a partner. One is the receptionist, one is the guest. You must use greetings, personal info, spelling, numbers, and at least one survival phrase!</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 relative z-10 mb-10">
+                    
+                    <!-- Roles -->
+                    <div class="space-y-6">
+                        <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/20">
+                            <h3 class="text-xl font-bold text-amber-400 mb-2 flex items-center gap-2"><i class="fa-solid fa-bell-concierge"></i> Receptionist</h3>
+                            <ul class="text-sm text-slate-200 space-y-2 list-disc list-inside">
+                                <li>Greet the guest.</li>
+                                <li>Ask for their first and last name.</li>
+                                <li>Ask them to <strong>spell</strong> their last name.</li>
+                                <li>Ask for their phone number.</li>
+                                <li>Give them a room number.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/20">
+                            <h3 class="text-xl font-bold text-blue-400 mb-2 flex items-center gap-2"><i class="fa-solid fa-suitcase"></i> Guest</h3>
+                            <ul class="text-sm text-slate-200 space-y-2 list-disc list-inside">
+                                <li>Greet the receptionist.</li>
+                                <li>Give your real name.</li>
+                                <li>Spell your last name clearly.</li>
+                                <li>Give a fake phone number and a fake reservation number.</li>
+                                <li>Use <strong>"Can you repeat that?"</strong> at least once.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Scaffold Script -->
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-600 flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-emerald-400 mb-4 border-b border-slate-700 pb-2">Useful Language</h3>
+                        
+                        <div class="mb-4 text-sm text-slate-300 grid grid-cols-2 gap-2">
+                            <div class="bg-slate-700 p-2 rounded">"What is your reservation number?"</div>
+                            <div class="bg-slate-700 p-2 rounded">"My reservation number is..."</div>
+                            <div class="bg-slate-700 p-2 rounded">"Your room number is..."</div>
+                            <div class="bg-slate-700 p-2 rounded">"Can you spell that, please?"</div>
+                        </div>
+
+                        <details class="mb-4">
+                            <summary class="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-5 rounded-lg transition">👀 Show Sample Script</summary>
+                            <div class="mt-3 bg-slate-900 p-4 rounded-xl text-sm leading-relaxed border border-slate-700">
+                                <p><strong class="text-amber-400">R:</strong> Good afternoon! Welcome to the hotel.</p>
+                                <p><strong class="text-blue-400">G:</strong> Hello. I have a reservation.</p>
+                                <p><strong class="text-amber-400">R:</strong> What is your reservation number?</p>
+                                <p><strong class="text-blue-400">G:</strong> It is 8-4-0-2-9.</p>
+                                <p><strong class="text-amber-400">R:</strong> And what is your name, please?</p>
+                                <p><strong class="text-blue-400">G:</strong> My name is Maria Gomez.</p>
+                                <p><strong class="text-amber-400">R:</strong> Can you spell your last name, please?</p>
+                                <p><strong class="text-blue-400">G:</strong> Yes. G - O - M - E - Z.</p>
+                                <p><strong class="text-amber-400">R:</strong> Thank you. And what is your phone number?</p>
+                                <p><strong class="text-blue-400">G:</strong> Can you repeat that, please?</p>
+                                <p><strong class="text-amber-400">R:</strong> What is your phone number?</p>
+                                <p><strong class="text-blue-400">G:</strong> It is 3-1-4-5-5-2-9.</p>
+                                <p><strong class="text-amber-400">R:</strong> Perfect. Your room number is 14.</p>
+                            </div>
+                        </details>
+
+                        <div class="flex flex-col items-center justify-center mt-auto pt-6">
+            <div class="text-center pb-10">
+                <p class="text-slate-500 font-medium text-lg">Great job today! See you next class! 👋</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // Global State
+        let answeredQuestions = new Set(); 
+
+        // UI Functions
+        function switchTab(tabId) {
+            try {
+                document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+                const tabs = ['tab-warmup', 'tab-presentations', 'tab-alphabet', 'tab-numbers', 'tab-classroom', 'tab-speaking', 'tab-mission'];
+                
+                tabs.forEach(id => {
+                    const btn = document.getElementById(`btn-${id}`);
+                    if (btn) btn.className = "px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap";
+                });
+                
+                const target = document.getElementById(tabId);
+                if (target) target.classList.add('active');
+                
+                const activeBtn = document.getElementById(`btn-${tabId}`);
+                if (activeBtn) activeBtn.className = "px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 bg-slate-800 text-white shadow-md whitespace-nowrap";
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (e) { console.error('switchTab error:', e); }
+        }
+
+        function showToast(msg, type = 'success') {
+            try {
+                const toast = document.getElementById('toast');
+                toast.textContent = msg;
+                toast.className = `toast toast-${type} show`;
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            } catch (e) { console.error(e); }
+        }
+
+        // ==========================================
+        // TEXT-TO-SPEECH
+        // ==========================================
+        function speakText(text, rate = 0.9) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                setTimeout(() => {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'en-US';
+                    utterance.rate = rate; 
+                    window.speechSynthesis.speak(utterance);
+                }, 50);
+            } else {
+                showToast("Audio not supported in this browser.", "error");
+            }
+        }
+
+        function spellAudio(spelledWord) {
+            // Slower rate for spelling
+            speakText(spelledWord, 0.6);
+        }
+
+        // ==========================================
+        // ACTIVITY 1: ROULETTE
+        // ==========================================
+        const rouletteQuestions = [
+            "Say a formal greeting.",
+            "Say an informal greeting.",
+            "Ask a partner for their name.",
+            "Ask a partner where they are from.",
+            "Ask a partner for their age.",
+            "Introduce yourself in one sentence.",
+            "Say a polite farewell.",
+            "Say an informal farewell.",
+            "Ask a partner for their profession."
+        ];
+        let rouletteInterval;
+
+        function spinRoulette() {
+            const textEl = document.getElementById('roulette-text');
+            const btn = document.getElementById('spin-btn');
+            
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            
+            let spins = 0;
+            clearInterval(rouletteInterval);
+            
+            rouletteInterval = setInterval(() => {
+                const randomQ = rouletteQuestions[Math.floor(Math.random() * rouletteQuestions.length)];
+                textEl.innerHTML = `<span class="text-blue-300 text-xl">${randomQ}</span>`;
+                spins++;
+                
+                if(spins > 15) {
+                    clearInterval(rouletteInterval);
+                    const finalQ = rouletteQuestions[Math.floor(Math.random() * rouletteQuestions.length)];
+                    textEl.innerHTML = `"${finalQ}"`;
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }, 80);
+        }
+
+        // ==========================================
+        // ACTIVITY 2: UNSCRAMBLE
+        // ==========================================
+        const unscrambleData = [
+            { q: "name / What / your / is / ?", a: ["what", "is", "your", "name", "?"] },
+            { q: "from / Where / are / you / ?", a: ["where", "are", "you", "from", "?"] },
+            { q: "live / I / Buga / in", a: ["i", "live", "in", "buga"] },
+            { q: "to / Nice / you / meet", a: ["nice", "to", "meet", "you"] },
+            { q: "are / old / you / How / ?", a: ["how", "old", "are", "you", "?"] },
+            { q: "am / years / 30 / I / old", a: ["i", "am", "30", "years", "old"] },
+            { q: "is / email / What / your / ?", a: ["what", "is", "your", "email", "?"] },
+            { q: "a / am / I / teacher", a: ["i", "am", "a", "teacher"] },
+            { q: "do / What / do / you / ?", a: ["what", "do", "you", "do", "?"] },
+            { q: "number / your / is / What / ?", a: ["what", "is", "your", "number", "?"] }
+        ];
+
+        function initUnscramble() {
+            const container = document.getElementById('unscramble-container');
+            if (!container) return;
+            container.innerHTML = '';
+            unscrambleData.forEach((item, index) => {
+                const words = item.q.split(' / ');
+                const shuffled = [...words].sort(() => Math.random() - 0.5);
+                
+                let wordsHtml = shuffled.map(w => `<button onclick="handleUnscrambleClick(this, '${index}')" class="bg-purple-100 hover:bg-purple-200 text-purple-800 font-bold py-2 px-4 rounded shadow-sm border border-purple-200 transition" data-word="${w.toLowerCase()}">${w}</button>`).join('');
+                
+                const html = `
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 shadow-sm" id="unscramble-${index}">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Sentence ${index + 1}</span>
+                            <button onclick="resetUnscramble('${index}')" class="text-xs text-slate-400 hover:text-slate-600"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-3" id="word-bank-${index}">${wordsHtml}</div>
+                        <div class="droppable p-2 min-h-[50px] flex flex-wrap gap-2 items-center w-full" id="answer-box-${index}"></div>
+                        <p id="feedback-unscramble-${index}" class="text-sm font-bold mt-1 h-5 text-emerald-600"></p>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        function handleUnscrambleClick(btn, index) {
+            const answerBox = document.getElementById(`answer-box-${index}`);
+            answerBox.appendChild(btn);
+            const allBtns = answerBox.querySelectorAll('button');
+            if (allBtns.length === unscrambleData[index].a.length) {
+                checkUnscramble(index, allBtns);
+            }
+        }
+
+        function resetUnscramble(index) {
+            const answerBox = document.getElementById(`answer-box-${index}`);
+            const wordBank = document.getElementById(`word-bank-${index}`);
+            const btns = answerBox.querySelectorAll('button');
+            btns.forEach(btn => {
+                btn.disabled = false;
+                btn.classList.remove('cursor-default', 'opacity-80');
+                wordBank.appendChild(btn);
+            });
+            document.getElementById(`feedback-unscramble-${index}`).textContent = "";
+            answerBox.classList.remove('bg-green-50', 'border-green-400', 'bg-red-50', 'border-red-400');
+            answerBox.classList.add('bg-slate-50', 'border-slate-300');
+        }
+
+        function checkUnscramble(index, btns) {
+            const answerBox = document.getElementById(`answer-box-${index}`);
+            const feedback = document.getElementById(`feedback-unscramble-${index}`);
+            let isCorrect = true;
+            const targetArray = unscrambleData[index].a;
+            
+            btns.forEach((btn, i) => { if (btn.getAttribute('data-word') !== targetArray[i]) isCorrect = false; });
+
+            if (isCorrect) {
+                answerBox.classList.remove('border-slate-300', 'bg-slate-50', 'bg-red-50', 'border-red-400');
+                answerBox.classList.add('border-green-400', 'bg-green-50');
+                feedback.textContent = "✅ Perfect sentence!";
+                feedback.className = "text-sm font-bold mt-1 h-5 text-green-600";
+                btns.forEach(b => { b.disabled = true; b.classList.add('cursor-default', 'opacity-80'); });
+            } else {
+                answerBox.classList.remove('border-slate-300', 'bg-slate-50');
+                answerBox.classList.add('border-red-400', 'bg-red-50');
+                feedback.textContent = "❌ Not quite right. Click 'Reset'.";
+                feedback.className = "text-sm font-bold mt-1 h-5 text-red-500";
+            }
+        }
+
+        // ==========================================
+        // ACTIVITY 3: PRESENTATION TIMER
+        // ==========================================
+        let presInterval;
+        let presSeconds = 15 * 60; // 15 mins
+        let isPresRunning = false;
+
+        function updatePresTimerDisplay() {
+            const min = Math.floor(presSeconds / 60);
+            const sec = presSeconds % 60;
+            document.getElementById('presentation-timer-display').innerText = 
+                `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        }
+
+        function startPresentationTimer() {
+            if (isPresRunning) return;
+            isPresRunning = true;
+            document.getElementById('pres-timer-start').innerText = "Pause";
+            document.getElementById('pres-timer-start').onclick = pausePresentationTimer;
+            
+            presInterval = setInterval(() => {
+                if (presSeconds > 0) {
+                    presSeconds--;
+                    updatePresTimerDisplay();
+                } else {
+                    pausePresentationTimer();
+                    showToast("Presentations Time is Up!", "info");
+                }
+            }, 1000);
+        }
+
+        function pausePresentationTimer() {
+            clearInterval(presInterval);
+            isPresRunning = false;
+            document.getElementById('pres-timer-start').innerText = "Resume";
+            document.getElementById('pres-timer-start').onclick = startPresentationTimer;
+        }
+
+        function resetPresentationTimer() {
+            pausePresentationTimer();
+            presSeconds = 15 * 60;
+            updatePresTimerDisplay();
+            document.getElementById('pres-timer-start').innerText = "Start";
+            document.getElementById('pres-timer-start').onclick = startPresentationTimer;
+        }
+
+        // ==========================================
+        // ALPHABET GRID
+        // ==========================================
+        const alphabet = [
+            {l: 'A', p: 'ei'}, {l: 'B', p: 'bi'}, {l: 'C', p: 'ci'}, {l: 'D', p: 'di'}, {l: 'E', p: 'i'}, {l: 'F', p: 'ef'}, {l: 'G', p: 'yi'},
+            {l: 'H', p: 'eich'}, {l: 'I', p: 'ai'}, {l: 'J', p: 'yei'}, {l: 'K', p: 'kei'}, {l: 'L', p: 'el'}, {l: 'M', p: 'em'}, {l: 'N', p: 'en'},
+            {l: 'O', p: 'ou'}, {l: 'P', p: 'pi'}, {l: 'Q', p: 'kiu'}, {l: 'R', p: 'ar'}, {l: 'S', p: 'es'}, {l: 'T', p: 'ti'}, {l: 'U', p: 'iu'},
+            {l: 'V', p: 'vi'}, {l: 'W', p: 'dobl-iu'}, {l: 'X', p: 'ex'}, {l: 'Y', p: 'uai'}, {l: 'Z', p: 'zi'}
+        ];
+
+        function initAlphabet() {
+            const grid = document.getElementById('alphabet-grid');
+            if(!grid) return;
+            alphabet.forEach(item => {
+                // Spell out to force letter pronunciation in English
+                let speakTarget = item.l + "."; 
+                grid.innerHTML += `
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex flex-col items-center justify-center relative hover:bg-emerald-50 transition cursor-default">
+                        <span class="text-2xl font-black text-slate-800">${item.l}</span>
+                        <span class="text-[10px] text-slate-500 font-bold uppercase mb-2">(${item.p})</span>
+                        <button onclick="speakText('${speakTarget}')" class="w-8 h-8 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-600 flex items-center justify-center text-xs"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                `;
+            });
+        }
+
+        // ==========================================
+        // ACTIVITY 4 & 8: DICTATION CHECKER
+        // ==========================================
+        function checkDictation(inputId, correctText) {
+            const input = document.getElementById(inputId);
+            const val = input.value.trim().toUpperCase().replace(/\s/g, ''); // remove spaces
+            
+            if (val === correctText) {
+                input.classList.remove('border-slate-300', 'border-red-400');
+                input.classList.add('border-green-500', 'text-green-700', 'bg-green-50');
+                showToast("✅ Correct!", "success");
+            } else {
+                input.classList.remove('border-slate-300', 'border-green-500', 'bg-green-50');
+                input.classList.add('border-red-400', 'text-red-700', 'bg-red-50');
+                showToast("❌ Listen again.", "error");
+            }
+        }
+
+        // ==========================================
+        // MULTIPLE CHOICE / DROPDOWNS
+        // ==========================================
+        function checkMCQ(containerId, guessIndex, correctIndex) {
+            if (answeredQuestions.has(containerId)) return;
+            const container = document.getElementById(containerId);
+            const buttons = container.querySelectorAll('button');
+            
+            if (guessIndex === correctIndex) {
+                buttons[guessIndex].classList.add('correct-highlight');
+                showToast('✅ Correct!', 'success');
+                answeredQuestions.add(containerId);
+            } else {
+                buttons[guessIndex].classList.add('wrong-highlight');
+                showToast('❌ Not quite. Try again.', 'error');
+                setTimeout(() => { buttons[guessIndex].classList.remove('wrong-highlight'); }, 1000);
+            }
+        }
+
+        function checkDropdowns(idsArray, sectionId) {
+            let allCorrect = true;
+            idsArray.forEach(id => {
+                const select = document.getElementById(id);
+                if (!select) return;
+                
+                if (select.value === 'correct') {
+                    select.classList.remove('border-slate-300', 'border-red-400');
+                    select.classList.add('border-green-400', 'bg-green-50', 'text-green-700');
+                } else {
+                    allCorrect = false;
+                    if (select.value !== "") {
+                        select.classList.remove('border-slate-300');
+                        select.classList.add('border-red-400', 'bg-red-50', 'text-red-700');
+                    }
+                }
+            });
+
+            const feedback = document.getElementById(`${sectionId}-feedback`);
+            if (allCorrect) {
+                if (feedback) { feedback.textContent = "✅ All correct!"; feedback.className = "mt-2 font-bold h-5 text-sm text-green-600"; }
+                showToast("✅ Dialogue complete!", "success");
+            } else {
+                if (feedback) { feedback.textContent = "❌ Some answers are incorrect. Try again!"; feedback.className = "mt-2 font-bold h-5 text-sm text-red-500"; }
+                showToast("❌ Check your answers.", "error");
+            }
+        }
+
+        // ==========================================
+        // ACTIVITY 7: TILE MATCH (NUMBERS)
+        // ==========================================
+        const numberPairs = [
+            {w: "Thirteen", n: "13"}, {w: "Thirty", n: "30"}, 
+            {w: "Fourteen", n: "14"}, {w: "Forty", n: "40"},
+            {w: "Fifteen", n: "15"}, {w: "Fifty", n: "50"},
+            {w: "Sixteen", n: "16"}, {w: "Sixty", n: "60"},
+            {w: "Seventeen", n: "17"}, {w: "Seventy", n: "70"}
+        ];
+        let tileSelectedW = null;
+        let tileSelectedN = null;
+        let matchedTiles = 0;
+
+        function initTileMatch() {
+            const container = document.getElementById('tile-match-container');
+            if(!container) return;
+            
+            let tiles = [];
+            numberPairs.forEach((pair, idx) => {
+                tiles.push(`<button id="tw-${idx}" onclick="handleTileClick(this, '${idx}', 'w')" class="bg-blue-100 hover:bg-blue-200 text-blue-800 font-bold py-4 rounded-xl border-2 border-blue-200 transition shadow-sm">${pair.w}</button>`);
+                tiles.push(`<button id="tn-${idx}" onclick="handleTileClick(this, '${idx}', 'n')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-4 rounded-xl border-2 border-slate-300 transition shadow-sm">${pair.n}</button>`);
+            });
+            
+            // Shuffle
+            tiles.sort(() => Math.random() - 0.5);
+            container.innerHTML = tiles.join('');
+        }
+
+        function handleTileClick(btn, idx, type) {
+            if (btn.classList.contains('invisible')) return;
+
+            if (type === 'w') {
+                if (tileSelectedW) tileSelectedW.btn.classList.remove('ring-4', 'ring-blue-400');
+                tileSelectedW = { btn, idx };
+                btn.classList.add('ring-4', 'ring-blue-400');
+            } else {
+                if (tileSelectedN) tileSelectedN.btn.classList.remove('ring-4', 'ring-slate-500');
+                tileSelectedN = { btn, idx };
+                btn.classList.add('ring-4', 'ring-slate-500');
+            }
+
+            if (tileSelectedW && tileSelectedN) {
+                if (tileSelectedW.idx === tileSelectedN.idx) {
+                    tileSelectedW.btn.classList.add('invisible');
+                    tileSelectedN.btn.classList.add('invisible');
+                    matchedTiles++;
+                    if (matchedTiles === numberPairs.length) {
+                        document.getElementById('tile-match-feedback').textContent = "🎉 All matched! Great job!";
+                    }
+                } else {
+                    tileSelectedW.btn.classList.remove('ring-4', 'ring-blue-400');
+                    tileSelectedN.btn.classList.remove('ring-4', 'ring-slate-500');
+                    showToast("❌ No match.", "error");
+                }
+                tileSelectedW = null;
+                tileSelectedN = null;
+            }
+        }
+
+        // ==========================================
+        // ACTIVITY 11: SPEECH RECOGNITION
+        // ==========================================
+        function startSpeechRecognition(btnElement, targetPhrases, cardId) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                showToast("Speech recognition not supported in this browser. Try Chrome.", "error");
+                return;
+            }
+
+            const card = document.getElementById(cardId);
+            const statusText = card.querySelector('.status-text');
+            const targets = Array.isArray(targetPhrases) ? targetPhrases : [targetPhrases];
+            
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onstart = function() {
+                btnElement.classList.add('mic-active');
+                statusText.textContent = "Listening... Speak now!";
+                statusText.classList.add('text-red-500');
+                statusText.classList.remove('text-green-600');
+            };
+
+            recognition.onresult = function(event) {
+                const speechResult = event.results[0][0].transcript.toLowerCase();
+                // Aggressively clean punctuation to match simple strings
+                const cleanSpeech = speechResult.replace(/[^a-z0-9]/g, '');
+                
+                let isMatch = false;
+                for (let target of targets) {
+                    const cleanTarget = target.toLowerCase().replace(/[^a-z0-9]/g, '');
+                    if (cleanSpeech.includes(cleanTarget) || cleanTarget.includes(cleanSpeech)) {
+                        isMatch = true;
+                        break;
+                    }
+                }
+                
+                if (isMatch) {
+                    card.classList.remove('border-slate-200', 'border-red-400');
+                    card.classList.add('border-green-400', 'bg-green-50');
+                    statusText.textContent = "✅ Great pronunciation!";
+                    statusText.className = "text-sm font-bold text-green-600 mt-2 h-5 status-text";
+                    btnElement.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    btnElement.classList.replace('text-slate-600', 'text-green-600');
+                } else {
+                    statusText.textContent = `❌ Heard: "${speechResult}". Try again!`;
+                    statusText.className = "text-sm font-bold text-red-500 mt-2 h-5 status-text";
+                    card.classList.add('border-red-400');
+                }
+            };
+
+            recognition.onerror = function() {
+                statusText.textContent = "Error: Could not hear you. Check mic.";
+                statusText.className = "text-sm font-bold text-red-500 mt-2 h-5 status-text";
+                btnElement.classList.remove('mic-active');
+            };
+
+            recognition.onend = function() {
+                btnElement.classList.remove('mic-active');
+                if(!statusText.textContent.includes('✅') && !statusText.textContent.includes('❌') && !statusText.textContent.includes('Error')){
+                    statusText.textContent = "Click to speak";
+                    statusText.classList.remove('text-red-500');
+                }
+            };
+
+            recognition.start();
+        }
+
+        // ==========================================
+        // ACTIVITY 12: HOTEL TIMER
+        // ==========================================
+        let hotelInterval;
+        let hotelSeconds = 5 * 60; // 5 mins
+        let isHotelRunning = false;
+
+        function updateHotelTimerDisplay() {
+            const min = Math.floor(hotelSeconds / 60);
+            const sec = hotelSeconds % 60;
+            document.getElementById('hotel-timer-display').innerText = 
+                `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        }
+
+        function startHotelTimer() {
+            if (isHotelRunning) return;
+            isHotelRunning = true;
+            document.getElementById('hotel-timer-start').innerText = "Pause";
+            document.getElementById('hotel-timer-start').onclick = pauseHotelTimer;
+            
+            hotelInterval = setInterval(() => {
+                if (hotelSeconds > 0) {
+                    hotelSeconds--;
+                    updateHotelTimerDisplay();
+                } else {
+                    pauseHotelTimer();
+                    showToast("Role-play Time is Up!", "info");
+                }
+            }, 1000);
+        }
+
+        function pauseHotelTimer() {
+            clearInterval(hotelInterval);
+            isHotelRunning = false;
+            document.getElementById('hotel-timer-start').innerText = "Resume";
+            document.getElementById('hotel-timer-start').onclick = startHotelTimer;
+        }
+
+        function resetHotelTimer() {
+            pauseHotelTimer();
+            hotelSeconds = 5 * 60;
+            updateHotelTimerDisplay();
+            document.getElementById('hotel-timer-start').innerText = "Start";
+            document.getElementById('hotel-timer-start').onclick = startHotelTimer;
+        }
+
+        // ==========================================
+        // INITIALIZATION
+        // ==========================================
+        window.onload = function() {
+            try { initUnscramble(); } catch (e) { console.error('Unscramble error:', e); }
+            try { initAlphabet(); } catch (e) { console.error('Alphabet error:', e); }
+            try { initTileMatch(); } catch (e) { console.error('Tile Match error:', e); }
+            switchTab('tab-warmup');
+        };
+    </script>
+</body>
+</html>
